@@ -1,0 +1,9 @@
+
+type: datasource.sqlite
+options:
+  provider: DATA_PROVIDER_DYNAMIC
+
+  entities:
+    - entity: default/courses
+
+  query: SELECT id, '$.description', '$.name', '$.difficulty', '$.active', '$.image'  FROM [default/courses]

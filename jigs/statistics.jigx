@@ -9,8 +9,10 @@ datasources:
       data:
         - y: 5
           color: negative
+          legend: test2
         - y: 10
-          color: positive     
+          color: positive   
+          legend: test  
 
 children:
   - type: component.pie-chart
@@ -19,7 +21,9 @@ children:
         title:
           text: '2 of 3'
           verticalAlign: center
-
+        subtitle:
+          text: Test
+          verticalAlign: center
             
           
 
@@ -28,7 +32,12 @@ children:
         width: 120
       series:
         - data: =@ctx.datasources.mydata
+          dataLabels:
+            - isEnabled: true
+              
           
           layout: pie
-          
+      legend:
+        isHidden: false
+        
           

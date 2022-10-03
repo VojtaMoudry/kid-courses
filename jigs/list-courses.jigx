@@ -3,30 +3,20 @@ description: Description of your Jig
 type: jig.list
 icon: contact
 
-datasources:
-  courses:
-    type: datasource.sqlite
-    options:
-      provider: DATA_PROVIDER_LOCAL
-    
-      entities:
-        - entity: courses
-    
-      query: SELECT id, '$.description', '$.name', '$.difficulty', '$.active'  FROM [courses]
-#'$.image'
-  
+
+
 
 data: =@ctx.datasources.courses
 item:
   type: component.list-item
   options:
     divider: solid
-    title: =@ctx.datasources.courses.name
+    title: =@ctx.current.item.name
     subtitle: =@ctx.current.item.description
-    # leftElement: 
-    #   element: image
-    #   text: ''
-    #   uri: =@ctx.datasources.courses.image
+    leftElement: 
+      element: image
+      text: ''
+      uri: =@ctx.datasources.courses.image
     avatars:
       - text: test
         uri: tst
@@ -37,10 +27,17 @@ item:
       color:
         - when: =@ctx.current.item.difficulty="hard" ? true :false 
           color: color3
-          
+        - when: =@ctx.current.item.difficulty="moderate" ? true :false 
+          color: color4       
+        - when: =@ctx.current.item.difficulty="easy" ? true :false 
+          color: color2                 
     onPress: 
       type: action.go-to
       options:
         linkTo: course-detail
+        parameters:
+          name: =@ctx.current.item.name  
+          description: =@ctx.current.item.description
+          id: =@ctx.current.item.id
         
       

@@ -1,5 +1,5 @@
-title: Course detail [PLACEHOLDER]
-description: Description of your Jig
+title: =@ctx.jig.inputs.name
+description: =@ctx.jig.inputs.description
 type: jig.default
 
 header: 
@@ -26,30 +26,6 @@ datasources:
           field2: value              
 
 children:
-#   - type: component.stepper
-#     options:
-#       data: =@ctx.datasources.steps
-#       isExpandable: false
-#       title: Shipment in transit
-#       item:
-#         type: component.step
-#         options:
-#           title: Title
-#           description: Desc
-#           value: =@ctx.current.item.value 
-#           leftElement:
-#             element: icon
-#             name: =@ctx.current.item.icon
-#           style:
-#             isPositive: =@ctx.current.item.isCompleted
-#             isActive: =@ctx.current.item.isActive
-#             isStrikeThrough: =@ctx.current.item.isCompleted
-#             isDisabled: =@ctx.current.item.isWaiting
-#       completedPercentage: 0.5
-#       style:  
-#         isPositive: false
-#         isWarning: false
-#         isNegative: false
         
   - type: component.list
     options:
