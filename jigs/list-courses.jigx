@@ -3,24 +3,6 @@ description: Description of your Jig
 type: jig.list
 icon: contact
 
-# filter: [
-#   - title: test
-#     value: test
-#   - title: test2
-#     value: tralala
-# ]
-  
-  
-actions:
-  - children:
-      - type: action.action-list
-        options:
-          title: Add course
-          actions:
-            - type: action.go-back
-  
-isSearchable: true
-
 data: =@ctx.datasources.courses
 item:
   type: component.list-item
@@ -28,9 +10,9 @@ item:
     divider: solid
     title: =@ctx.current.item.name
     subtitle: =@ctx.current.item.description
-    leftElement: 
+    leftElement:
       element: image
-      text: ''
+      text: ""
       uri: =@ctx.datasources.courses.image
     avatars:
       - text: test
@@ -40,19 +22,17 @@ item:
     label:
       title: =@ctx.current.item.difficulty
       color:
-        - when: =@ctx.current.item.difficulty="hard" ? true :false 
+        - when: =@ctx.current.item.difficulty="hard" ? true :false
+          color: color3
+        - when: =@ctx.current.item.difficulty="moderate" ? true :false
           color: color4
-        - when: =@ctx.current.item.difficulty="moderate" ? true :false 
-          color: color3       
-        - when: =@ctx.current.item.difficulty="easy" ? true :false 
-          color: color2                 
-    onPress: 
+        - when: =@ctx.current.item.difficulty="easy" ? true :false
+          color: color2
+    onPress:
       type: action.go-to
       options:
         linkTo: course-detail
         parameters:
-          name: =@ctx.current.item.name  
+          name: =@ctx.current.item.name
           description: =@ctx.current.item.description
-          id: =@ctx.current.item.id
-        
-      
+          course_id: =@ctx.current.item.id
