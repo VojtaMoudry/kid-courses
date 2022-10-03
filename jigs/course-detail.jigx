@@ -43,5 +43,5 @@ children:
               linkTo: question-answer-form
 
 placeholders:
-  - title: =@ctx.jig.inputs.name course doesnt have any questions yet 😵😵
+  - title: =@ctx.jig.inputs.name & " course doesnt have any questions yet 🤔🤔🤫"
     icon: missing-data
