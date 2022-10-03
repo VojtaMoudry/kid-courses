@@ -29,12 +29,11 @@ children:
           text: ='Of' & ' ' & $count(@ctx.datasources.courses) & ' ' & 'Courses'
           verticalAlign: center
         width: 150
-        height: 50
+        height: 0
+        isAnimated: true
         
         
-      #         title: =$count(@ctx.datasources.patients.id) > 0 ? 'Save changes':'Create patient' 
 
-      # - title: ='Section 2, items(' & $count(@ctx.datasources.components-section2) & ')'
 
       series:
         # - data: [{"y": 23, color: "color2"}, {"y": 89, color: "color3" }]
@@ -42,18 +41,14 @@ children:
           
         - data: =[
             $count(@ctx.datasources.courses.active = true), 
-            $count(@ctx.datasources.courses.active)
+            $count(@ctx.datasources.courses.active)]
           # data=[{"x": $count(@ctx.datasources.courses.active = true), "y": 23},
           # color: =[color5, color4]
           
           dataLabels:
             - isEnabled: true
           layout: arch
-          
-
-          
       legend:
-
         isHidden: false
         
           
