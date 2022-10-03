@@ -2,7 +2,43 @@ title: Courses
 type: jig.list
 icon: contact
 
-data: =@ctx.datasources.courses
+filter:
+  - title: All
+    value: ""
+  - title: Hard
+    value: hard
+  - title: Easy
+    value: easy
+  - title: Moderate
+    value: moderate  
+  
+actions:
+  - children:
+      - type: action.action-list
+        options:
+          title: =@ctx.jig.state.filter
+          actions:
+            - type: action.go-back
+  
+isSearchable: true
+
+datasources: 
+  filtered-courses:
+    type: datasource.sqlite
+    options:
+      provider: DATA_PROVIDER_DYNAMIC
+
+      entities:
+        - entity: default/courses
+
+      query: SELECT id, '$.description', '$.name', '$.difficulty', '$.active', '$.image'  FROM [default/courses] WHERE difficulty=@difficulty OR @difficulty IS NULL
+      queryParameters:
+        difficulty: =@ctx.jig.state.filter
+        
+          
+  
+
+data: =@ctx.datasources.filtered-courses
 item:
   type: component.list-item
   options:

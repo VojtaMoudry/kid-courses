@@ -18,7 +18,7 @@ datasources:
         - entity: default/questions
         - entity: default/submissions
 
-      query: SELECT id, '$.correct', '$.answer', '$.course_id', '$.name', '$.active' FROM [default/questions] LEFT JOIN [default/submissions].questionid = [default/submissions].submissions WHERE '$.course_id' = course_id
+      query: SELECT id, '$.answer', '$.course_id', '$.name' FROM [default/questions] AS Q LEFT JOIN [default/submissions] AS S ON Q.questionid  = S.questionid WHERE '$.course_id' = @course_id
       queryParameters:
         course_id: =@ctx.jig.inputs.course_id
 
@@ -34,10 +34,10 @@ children:
           title: =@ctx.current.item.name
           leftElement:
             element: checkbox
-            value: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
-          style:
-            isError: =@ctx.current.item.answer != @ctx.current.item.correct ? true :false
-            isPositive: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
+            # value: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
+          # style:
+          #   isError: =@ctx.current.item.answer != @ctx.current.item.correct ? true :false
+          #   isPositive: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
           onPress:
             type: action.go-to
             options:
