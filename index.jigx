@@ -8,6 +8,8 @@ widgets:
     jigId: course-detail
   - size: 1x1
     jigId: question-answer-form
+  - size: "4x2"
+    jigId: list-courses
     
 home:
   - instanceId: HUB

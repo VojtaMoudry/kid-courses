@@ -7,31 +7,53 @@ datasources:
     type: datasource.static
     options:
       data:
-        - y: 2
-          color: positive
+        - color: positive
           legend: test2
-        - y: 8
-          color: color14   
+        - color: color14   
           legend: test  
+          
+      
 
 children:
   - type: component.pie-chart
     options:
+      # yAxis:
+      #   labels: =@ctx.current.item.legend
+           
       chart:
+        
         title:
-          text: '2 Done'
+          text: =$count(@ctx.datasources.courses.active = true) & ' ' & 'Done'
           verticalAlign: center
         subtitle:
-          text: Of 10 courses
+          text: ='Of' & ' ' & $count(@ctx.datasources.courses) & ' ' & 'Courses'
           verticalAlign: center
         width: 150
         height: 50
+        
+        
+      #         title: =$count(@ctx.datasources.patients.id) > 0 ? 'Save changes':'Create patient' 
+
+      # - title: ='Section 2, items(' & $count(@ctx.datasources.components-section2) & ')'
+
       series:
-        - data: =@ctx.datasources.mydata
+        # - data: [{"y": 23, color: "color2"}, {"y": 89, color: "color3" }]
+        #  - data =[{"y": $count(@ctx.datasources.courses.active = true), color: "color2"}, {"y": $count(@ctx.datasources.courses.active), color: "color3" }]
+          
+        - data: =[
+            $count(@ctx.datasources.courses.active = true), 
+            $count(@ctx.datasources.courses.active)
+          # data=[{"x": $count(@ctx.datasources.courses.active = true), "y": 23},
+          # color: =[color5, color4]
+          
           dataLabels:
             - isEnabled: true
           layout: arch
+          
+
+          
       legend:
+
         isHidden: false
         
           

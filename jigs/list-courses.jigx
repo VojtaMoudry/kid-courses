@@ -63,6 +63,9 @@ item:
           color: color4
         - when: =@ctx.current.item.difficulty="easy" ? true :false
           color: color2
+    style:
+      isDisabled: =@ctx.current.item.active="true" ? true :false
+      isStrikeThrough: =@ctx.current.item.active="true" ? true :false
     onPress:
       type: action.go-to
       options:
