@@ -24,5 +24,5 @@ actions:
           method: create
           goBack: previous
           data:
-            userId: =@ctx.current.item.id
-            courseId: =@ctx.jig.inputs.courseid
+            userId: =@ctx.current.item.email
+            course_id: =@ctx.jig.inputs.courseid
