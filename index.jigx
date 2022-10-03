@@ -4,6 +4,10 @@ category: miscellaneous
 widgets:
   - size: 1x1 # choose size of the widget on the home hub
     jigId: list-courses
+  - size: 1x1
+    jigId: course-detail
+  - size: 1x1
+    jigId: question-answer-form
     
 home:
   - instanceId: HUB

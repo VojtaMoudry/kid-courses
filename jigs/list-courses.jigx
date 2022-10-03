@@ -4,50 +4,43 @@ type: jig.list
 icon: contact
 
 datasources:
-  mydata: 
-    type: datasource.static
+  courses:
+    type: datasource.sqlite
     options:
-      data:
-        - id: 1
-          field1: Course name
-          field2: value
-          difficulty-text: Easy
-          difficulty-color: color2
-          
-        - id: 2
-          field1: Course name
-          field2: value
-          difficulty-text: Difficult
-          difficulty-color: color4  
+      provider: DATA_PROVIDER_LOCAL
+    
+      entities:
+        - entity: courses
+    
+      query: SELECT id, '$.description', '$.name', '$.difficulty', '$.active'  FROM [courses]
+#'$.image'
+  
 
-        - id: 3
-          field1: Course name
-          field2: value
-          difficulty-text: Intermediate
-          difficulty-color: color3        
-
-data: =@ctx.datasources.mydata
+data: =@ctx.datasources.courses
 item:
   type: component.list-item
   options:
-    color:
-      - when: true
-        color: =@ctx.current.item.difficulty-color
     divider: solid
-    title: =@ctx.current.item.field1
-    subtitle: =@ctx.current.item.field2
-    leftElement: 
-      element: image
-      text: ''
-      uri: =@ctx.current.item.avatarUrl
+    title: =@ctx.datasources.courses.name
+    subtitle: =@ctx.current.item.description
+    # leftElement: 
+    #   element: image
+    #   text: ''
+    #   uri: =@ctx.datasources.courses.image
     avatars:
       - text: test
         uri: tst
       - text: ulala
         uri: tadsfad
     label:
-      title: =@ctx.current.item.difficulty-text
+      title: =@ctx.current.item.difficulty
       color:
-        - when: true
-          color: =@ctx.current.item.difficulty-color
+        - when: =@ctx.current.item.difficulty="hard" ? true :false 
+          color: color3
+          
+    onPress: 
+      type: action.go-to
+      options:
+        linkTo: course-detail
+        
       
