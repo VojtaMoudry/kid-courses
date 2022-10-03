@@ -1,0 +1,10 @@
+type: datasource.sqlite
+options:
+  provider: DATA_PROVIDER_DYNAMIC
+
+  entities:
+    - entity: default/submissions
+
+  query: SELECT id, '$.answer', '$.questionid', '$.userid' FROM [default/submissions] WHERE '$.userid'= @userid
+  queryParameters:
+    userid: =@ctx.user.email

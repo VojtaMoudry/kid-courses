@@ -9,23 +9,22 @@ header:
       uri: https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/file-shapes-for-kids-1592568510.jpg
 
 datasources:
-  question_for_course:
+  questions:
     type: datasource.sqlite
     options:
       provider: DATA_PROVIDER_DYNAMIC
 
       entities:
         - entity: default/questions
-        - entity: default/submissions
 
-      query: SELECT Q.id, json_extract(S.data,'$.answer') as answer, json_extract(Q.data,'$.correct') as correct, json_extract(Q.data,'$.name') as name FROM [default/questions] AS Q LEFT JOIN [default/submissions] AS S ON Q.id  = S.questionid WHERE json_extract(S.data,'$.course_id') = @course_id
+      query: SELECT id, '$.name', '$.correct','$.type'  FROM [default/questions] WHERE '$.course_id'= @course_id
       queryParameters:
         course_id: =@ctx.jig.inputs.course_id
 
 children:
   - type: component.list
     options:
-      data: =@ctx.datasources.question_for_course
+      data: =@ctx.datasources.questions
 
       maximumItemsToRender: 8
       item:
@@ -34,11 +33,15 @@ children:
           title: =@ctx.current.item.name
           leftElement:
             element: checkbox
-            # value: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
-          # style:
-          #   isError: =@ctx.current.item.answer != @ctx.current.item.correct ? true :false
-          #   isPositive: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
+            value: hello
+          style:
+            isError: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? true :false
+            # isPositive: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
           onPress:
             type: action.go-to
             options:
               linkTo: question-answer-form
+
+placeholders:
+  - title: =@ctx.jig.inputs.name course doesnt have any questions yet 😵😵
+    icon: missing-data

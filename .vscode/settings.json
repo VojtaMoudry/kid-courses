@@ -1,4 +1,10 @@
 {
     "jigx.isJigxUser": true,
-    "workbench.iconTheme": "jigx"
+    "workbench.iconTheme": "jigx",
+    "jigx.attachedDevice": "Samuel’s iPhone",
+    "jigx.attachedDeviceToken": {
+        "deviceName": "Samuel’s iPhone",
+        "deviceAddress": "device/27E4FE27-2F54-4795-81A3-77C5FCE03BF9",
+        "sessionKey": "99b7604d-aca9-4334-ae42-362db2480109"
+    }
 }
