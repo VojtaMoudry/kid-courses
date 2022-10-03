@@ -10,7 +10,7 @@ widgets:
     jigId: question-answer-form
   - size: 4x2
     jigId: list-courses
-  - size: "2x2"
+  - size: 1x1
     jigId: my-detail
     
 home:
