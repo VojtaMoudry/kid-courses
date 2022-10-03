@@ -1,0 +1,33 @@
+title: Question-title
+description: Blabla
+type: jig.default
+
+children:
+  - type: component.form
+    instanceId: question-answer-form
+    options:
+      children:
+        - type: component.checkbox
+          instanceId: question-1
+          options:
+            label: question-1
+        - type: component.checkbox
+          instanceId: question-1
+          options:
+            label: question-2
+        - type: component.checkbox
+          instanceId: question-2
+          options:
+            label: question-3
+            color:
+              - when: true
+                color: color10
+
+        - type: component.checkbox
+          instanceId: question-4
+
+          options:
+            label: question-4 (CORRECT)
+            color:
+              - when: true
+                color: color1
