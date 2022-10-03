@@ -1,0 +1,35 @@
+title: Pick the correct answer
+type: jig.default
+
+datasources:
+  interactive:
+    type: datasource.static
+    options:
+      data:
+        - id: 1
+          x: 0
+          y: 9
+        - id: 2
+          x: 0
+          y: 2
+        - id: 3
+          x: 0
+          y: 2
+        - id: 4
+          x: 3
+          y: 4
+
+children:
+  - type: component.interactive-image
+    options:
+      source:
+        uri: https://getemoji.com/
+      data: =@ctx.datasources.interactive
+      item:
+        type: component.interactive-image-item
+        options:
+          id: Hello
+          title: What?
+          percentageCoordinates:
+            x: =@ctx.current.item.x
+            y: =@ctx.current.item.y

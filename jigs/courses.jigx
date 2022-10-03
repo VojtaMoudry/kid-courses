@@ -3,6 +3,4 @@ type: jig.composite
 
 children:
   - jigId: statistics
-    # inputs:
-      # recordid: =@ctx.jig.inputs.parameter
   - jigId: list-courses

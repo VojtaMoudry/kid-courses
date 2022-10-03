@@ -1,5 +1,5 @@
-title: Question-title
-description: Blabla
+title: =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].question
+
 type: jig.default
 
 children:
@@ -10,24 +10,55 @@ children:
         - type: component.checkbox
           instanceId: question-1
           options:
-            label: question-1
+            label: =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer1
+            color:
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer1
+                color: color10
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer1
+                color: primary
         - type: component.checkbox
           instanceId: question-1
           options:
-            label: question-2
+            label: =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer2
+
+            color:
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer2
+                color: color10
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer2
+                color: primary
         - type: component.checkbox
           instanceId: question-2
           options:
-            label: question-3
+            label: =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer3
             color:
-              - when: true
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer3
                 color: color10
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer3
+                color: primary
 
         - type: component.checkbox
           instanceId: question-4
 
           options:
-            label: question-4 (CORRECT)
+            label: =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer4
             color:
-              - when: true
-                color: color1
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer4
+                color: color10
+              - when: =@ctx.jig.inputs.has_answer && @ctx.jig.inputs.user_answer = =@ctx.datasources.static-question[@ctx.jig.inputs.question_id in id].answer4
+                color: primary
+
+actions:
+  - children:
+      - type: action.execute-entity
+        options:
+          title: Provide the answer.
+          provider: DATA_PROVIDER_DYNAMIC
+          entity: default/submissions
+          method: create
+          goBack: previous
+          data:
+            answer: 2
+            questionid: =@ctx.jig.inputs.question_id
+            userid: =@ctx.user.email
+          onSuccess:
+            type: action.go-back

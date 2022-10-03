@@ -8,4 +8,4 @@ options:
 
   query: SELECT COUNT(id) as y, 'active' as x, 'color2' as color FROM [default/courses] where '$.active' = 'true'
         UNION
-        SELECT COUNT(id) as y, 'inactive' as x, 'color14' as color FROM [default/courses]
+        SELECT COUNT(id) as y, 'inactive' as x, 'color14' as color FROM [default/courses] where '$.active' = 'true'

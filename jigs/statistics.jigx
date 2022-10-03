@@ -21,7 +21,7 @@ children:
       chart:
         
         title:
-          text: =$count(@ctx.datasources.courses.active = true) & ' ' & 'Done'
+          text: =@ctx.datasources.courses_1[1].y & ' ' & 'Done'
           verticalAlign: center
         subtitle:
           text: ='Of' & ' ' & $count(@ctx.datasources.courses) & ' ' & 'Courses'
@@ -35,17 +35,11 @@ children:
 
 
       series:
-        # - data: [{"y": 23, color: "color2"}, {"y": 89, color: "color3" }]
-        #  - data =[{"y": $count(@ctx.datasources.courses.active = true), color: "color2"}, {"y": $count(@ctx.datasources.courses.active), color: "color3" }]
-          
         - data: =@ctx.datasources.courses_1
-          # data=[{"x": $count(@ctx.datasources.courses.active = true), "y": 23},
-          # color: =[color5, color4]
-          
           dataLabels:
             - isEnabled: true
           layout: arch
       legend:
-        isHidden: false
+        isHidden: true
         
           

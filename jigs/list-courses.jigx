@@ -94,6 +94,7 @@ widgets:
                 icon: alert
               
         - type: widget.list
+          
           options:
             item: 
               type: component.stage

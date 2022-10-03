@@ -1,0 +1,83 @@
+type: datasource.static
+options:
+  data:
+    - id: 1
+      question: How many drink are OK?
+      answer1: Milion
+      answer2: 0
+      answer3: 3
+      answer4: 10
+      correct: Infinite
+      link_to: question-answer-form
+
+    - id: 2
+      question: What is name of this ship?
+      answer1: Atlantica pacifica
+      answer2: Vision of the seas
+      answer3: Fish & Jump
+      answer4: IDK
+      correct: 3
+      link_to: question-answer-form
+
+    - id: 3
+      question: Why?
+      answer1: Because I said so.
+      answer2: Because I love to.
+      answer3: Because I need another drink.
+      answer4: Because I'am hungry
+      correct: 2
+      link_to: question-answer-form
+
+    - id: 4
+      question: How many question we need?
+      answer1: 0
+      answer2: 10
+      answer3: 20
+      answer4: 30
+      correct: 100
+      link_to: question-answer-form
+
+    - id: 5
+      question: When we will eat something?
+      answer1: today
+      answer2: in two hours
+      answer3: never
+      answer4: yesterday
+      correct: what?
+      link_to: question-answer-form
+
+    - id: 6
+      question: Whats outside temperature?
+      answer1: 22
+      answer2: 23
+      answer3: 24
+      answer4: none of the these
+      correct: 4
+      link_to: question-answer-form
+
+    - id: 7
+      question: I need another...
+      answer1: shot
+      answer2: drink
+      answer3: desert
+      answer4: life
+      correct: 2
+      link_to: question-answer-form
+
+    - id: 7
+      question: Who looks like a super mario?
+      answer1: Andrej
+      answer2: Markus
+      answer3: Samuel
+      answer4: Daniil
+      correct: 1
+      link_to: question-answer-form
+
+    - id: 8
+      question: What up?
+      answer1: Milion
+      answer2: 0
+      answer3: 3
+      answer4: 10
+      correct: Infinite
+      link_to: interactive-image-form

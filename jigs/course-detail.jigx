@@ -8,49 +8,49 @@ header:
     source:
       uri: https://d138zd1ktt9iqe.cloudfront.net/media/seo_landing_files/file-shapes-for-kids-1592568510.jpg
 
-datasources:
-  questions:
-    type: datasource.sqlite
-    options:
-      provider: DATA_PROVIDER_DYNAMIC
+# datasources:
+#   questions:
+#     type: datasource.sqlite
+#     options:
+#       provider: DATA_PROVIDER_DYNAMIC
 
-      entities:
-        - entity: default/questions
+#       entities:
+#         - entity: default/questions
 
-      query: SELECT id, '$.name', '$.correct','$.type'  FROM [default/questions] WHERE '$.course_id'= @course_id
-      queryParameters:
-        course_id: =@ctx.jig.inputs.course_id
+#       query: SELECT id, '$.name', '$.correct','$.type', '$.index'  FROM [default/questions] WHERE '$.course_id'= @course_id
+#       queryParameters:
+#         course_id: =@ctx.jig.inputs.course_id
 
 children:
   - type: component.list
     options:
-      data: =@ctx.datasources.questions
+      data: =@ctx.datasources.static-question
 
       maximumItemsToRender: 8
       item:
         type: component.list-item
         options:
-          title: =@ctx.current.item.name
+          title: =@ctx.current.item.question
           leftElement:
             element: checkbox
             value: hello
           style:
-            isError: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? true :false
-            # isPositive: =@ctx.current.item.answer = @ctx.current.item.correct ? true :false
+            isError: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ?   =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer = @ctx.current.item.correct ? false :true:null
+            isPositive: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer = @ctx.current.item.correct ? false :true:null
+
           onPress:
             type: action.go-to
             options:
-              linkTo: question-answer-form
+              linkTo: =@ctx.current.item.link_to
 
-placeholders:
-  - title: =@ctx.jig.inputs.name & " course doesnt have any questions yet 🤔🤔🤫"
-    icon: missing-data
+              parameters:
+                course_id: =@ctx.jig.inputs.course_id
+                question_id: =@ctx.current.item.id
+                has_answer: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? true :false
+                is_correct: =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer = @ctx.current.item.correct
+                user_answer: =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer
 
-actions:
-  - children:
-      - type: action.go-to
-        options:
-          title: Assign people
-          linkTo: list-users
-          parameters:
-            courseid: =@ctx.jig.inputs.course_id
+# placeholders:
+#   - title: =@ctx.jig.inputs.name & " course doesnt have any questions yet 🤔🤔🤫"
+#     icon: missing-data
+#     when: =@ctx.datasources.static-question
