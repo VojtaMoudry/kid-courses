@@ -1,0 +1,17 @@
+provider: DATA_PROVIDER_REST
+method: GET
+url: https://graph.microsoft.com/v1.0//users/{id}/photo/$value
+
+parameters:
+  accessToken:
+    location: header
+    required: true
+    type: text
+    value: jigx.graph.oauth
+  id:
+    type: text
+    location: path
+outputTransform: '$.{"id": id, "displayName":displayName, "mail": mail}' 
+
+
+    # GET /users/{id | userPrincipalName}/photo/$value

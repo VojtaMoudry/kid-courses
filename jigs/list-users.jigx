@@ -1,0 +1,28 @@
+title: List of users
+description: All users
+type: jig.list
+icon: multiple-neutral-2 
+
+data: =@ctx.datasources.users
+isSelectable: true
+isSearchable: true
+item:
+  type: component.list-item
+
+  options:
+    divider: solid
+    title: =@ctx.current.item.displayName
+    subtitle: =@ctx.current.item.email
+    
+actions:
+  - children:
+      - type: action.execute-entity
+        options:
+          title: Create Record
+          provider: DATA_PROVIDER_DYNAMIC
+          entity: default/assignedusers
+          method: create
+          goBack: previous
+          data:
+            userId: =@ctx.current.item.id
+            courseId: =@ctx.jig.inputs.courseid

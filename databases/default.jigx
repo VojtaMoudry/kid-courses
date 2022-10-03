@@ -4,3 +4,4 @@ tables:
   questions: 
   answers: 
   submissions:
+  assignedusers:

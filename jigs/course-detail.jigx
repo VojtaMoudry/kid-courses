@@ -45,3 +45,12 @@ children:
 placeholders:
   - title: =@ctx.jig.inputs.name & " course doesnt have any questions yet 🤔🤔🤫"
     icon: missing-data
+
+actions:
+  - children:
+      - type: action.go-to
+        options:
+          title: Assign people
+          linkTo: list-users
+          parameters:
+            courseid: =@ctx.jig.inputs.course_id
