@@ -7,11 +7,11 @@ datasources:
     type: datasource.static
     options:
       data:
-        - y: 5
-          color: negative
+        - y: 2
+          color: positive
           legend: test2
-        - y: 10
-          color: positive   
+        - y: 8
+          color: color14   
           legend: test  
 
 children:
@@ -19,24 +19,24 @@ children:
     options:
       chart:
         title:
-          text: '2 of 3'
+          text: '2 Done'
           verticalAlign: center
         subtitle:
-          text: Test
+          text: Of 10 courses
           verticalAlign: center
             
           
 
         
         
-        width: 120
+        width: 150
       series:
         - data: =@ctx.datasources.mydata
           dataLabels:
             - isEnabled: true
               
           
-          layout: pie
+          layout: arch
       legend:
         isHidden: false
         

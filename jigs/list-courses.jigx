@@ -3,8 +3,23 @@ description: Description of your Jig
 type: jig.list
 icon: contact
 
-
-
+# filter: [
+#   - title: test
+#     value: test
+#   - title: test2
+#     value: tralala
+# ]
+  
+  
+actions:
+  - children:
+      - type: action.action-list
+        options:
+          title: Add course
+          actions:
+            - type: action.go-back
+  
+isSearchable: true
 
 data: =@ctx.datasources.courses
 item:
@@ -26,9 +41,9 @@ item:
       title: =@ctx.current.item.difficulty
       color:
         - when: =@ctx.current.item.difficulty="hard" ? true :false 
-          color: color3
+          color: color4
         - when: =@ctx.current.item.difficulty="moderate" ? true :false 
-          color: color4       
+          color: color3       
         - when: =@ctx.current.item.difficulty="easy" ? true :false 
           color: color2                 
     onPress: 
