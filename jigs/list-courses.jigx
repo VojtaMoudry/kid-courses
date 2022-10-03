@@ -78,13 +78,21 @@ item:
 
 widgets:
   
-  "2x4": 
+  4x2: 
     type: widget.group
     options:
       children:
+        
         - type: widget.value
+          
           options:
             value: 2
+            bottom: 
+              type: component.titles
+              options:
+                title: Number of courses
+                icon: alert
+              
         - type: widget.list
           options:
             item: 

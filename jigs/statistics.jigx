@@ -16,9 +16,7 @@ datasources:
 
 children:
   - type: component.pie-chart
-    options:
-      # yAxis:
-      #   labels: =@ctx.current.item.legend
+    options:       
            
       chart:
         
@@ -30,6 +28,7 @@ children:
           verticalAlign: center
         width: 150
         height: 0
+        
         isAnimated: true
         
         
@@ -39,9 +38,7 @@ children:
         # - data: [{"y": 23, color: "color2"}, {"y": 89, color: "color3" }]
         #  - data =[{"y": $count(@ctx.datasources.courses.active = true), color: "color2"}, {"y": $count(@ctx.datasources.courses.active), color: "color3" }]
           
-        - data: =[
-            $count(@ctx.datasources.courses.active = true), 
-            $count(@ctx.datasources.courses.active)]
+        - data: =@ctx.datasources.courses_1
           # data=[{"x": $count(@ctx.datasources.courses.active = true), "y": 23},
           # color: =[color5, color4]
           
