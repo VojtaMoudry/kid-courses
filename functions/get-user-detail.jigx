@@ -1,0 +1,11 @@
+provider: DATA_PROVIDER_REST
+method: GET
+url: https://graph.microsoft.com/v1.0/me
+
+parameters:
+  accessToken:
+    location: header
+    required: true
+    type: text
+    value: jigx.graph.oauth
+outputTransform: '$.{"id": id, "displayName":displayName, "mail": mail}' 

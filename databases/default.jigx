@@ -1,3 +1,6 @@
-# tables:
-#   table1:
-#   table2:
+databaseId: default
+tables:
+  courses: 
+  questions: 
+  answers: 
+  submissions:

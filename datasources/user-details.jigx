@@ -1,0 +1,10 @@
+type: datasource.sqlite
+options:
+  provider: DATA_PROVIDER_REST
+
+  entities:
+    - entity: user-details
+      function: get-user-detail
+      functionParameters:
+        accessToken: jigx.graph.oauth
+  query: SELECT '$.id', '$.displayName', '$.email' FROM [user-details]
