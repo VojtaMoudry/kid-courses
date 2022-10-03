@@ -24,18 +24,12 @@ children:
         subtitle:
           text: Of 10 courses
           verticalAlign: center
-            
-          
-
-        
-        
         width: 150
+        height: 50
       series:
         - data: =@ctx.datasources.mydata
           dataLabels:
             - isEnabled: true
-              
-          
           layout: arch
       legend:
         isHidden: false
