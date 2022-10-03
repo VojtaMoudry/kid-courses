@@ -10,6 +10,8 @@ widgets:
     jigId: question-answer-form
   - size: "4x2"
     jigId: list-courses
+  - size: "2x2"
+    jigId: my-detail
     
 home:
   - instanceId: HUB

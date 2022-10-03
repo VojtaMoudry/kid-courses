@@ -1,0 +1,20 @@
+title: My detail
+type: jig.default
+header: 
+  type: component.image
+  options:
+    source:
+      uri: =@ctx.user.avatarUrl
+      
+children:
+  - type: component.entity
+    options:
+      children:
+        - type: component.entity-field
+          options:
+            label: Display name
+            value: =@ctx.user.displayName
+        - type: component.entity-field
+          options:
+            label: Email
+            value: =@ctx.user.email    
