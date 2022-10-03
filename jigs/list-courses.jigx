@@ -71,3 +71,23 @@ item:
           name: =@ctx.current.item.name
           description: =@ctx.current.item.description
           course_id: =@ctx.current.item.id
+
+
+widgets:
+  
+  "2x4": 
+    type: widget.group
+    options:
+      children:
+        - type: widget.value
+          options:
+            value: 2
+        - type: widget.list
+          options:
+            item: 
+              type: component.stage
+              options:
+                right:
+                  title: =@ctx.current.item.name
+                left:
+                  title: =@ctx.current.item.name

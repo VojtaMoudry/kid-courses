@@ -1,8 +1,0 @@
-type: datasource.sqlite
-options:
-  provider: DATA_PROVIDER_DYNAMIC
-
-  entities:
-    - entity: default/questions
-
-  query: SELECT id, '$.correct', '$.course_id', '$.name', '$.active', FROM [default/questions]

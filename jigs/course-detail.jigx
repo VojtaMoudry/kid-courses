@@ -18,7 +18,7 @@ datasources:
         - entity: default/questions
         - entity: default/submissions
 
-      query: SELECT id, '$.answer', '$.course_id', '$.name' FROM [default/questions] AS Q LEFT JOIN [default/submissions] AS S ON Q.questionid  = S.questionid WHERE '$.course_id' = @course_id
+      query: SELECT Q.id, json_extract(S.data,'$.answer') as answer, json_extract(Q.data,'$.correct') as correct, json_extract(Q.data,'$.name') as name FROM [default/questions] AS Q LEFT JOIN [default/submissions] AS S ON Q.id  = S.questionid WHERE json_extract(S.data,'$.course_id') = @course_id
       queryParameters:
         course_id: =@ctx.jig.inputs.course_id
 
