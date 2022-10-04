@@ -1,4 +1,4 @@
-title: Pick the correct answer
+title: Interactive question
 type: jig.default
 description: Select birds from the image.
 datasources:
