@@ -10,8 +10,8 @@ filter:
   - title: Easy
     value: easy
   - title: Moderate
-    value: moderate  
-  
+    value: moderate
+
 actions:
   - children:
       - type: action.action-list
@@ -19,10 +19,10 @@ actions:
           title: =@ctx.jig.state.filter
           actions:
             - type: action.go-back
-  
+
 isSearchable: true
 
-datasources: 
+datasources:
   filtered-courses:
     type: datasource.sqlite
     options:
@@ -34,9 +34,6 @@ datasources:
       query: SELECT id, '$.description', '$.name', '$.difficulty', '$.active', '$.image'  FROM [default/courses] WHERE difficulty=@difficulty OR @difficulty IS NULL
       queryParameters:
         difficulty: =@ctx.jig.state.filter
-        
-          
-  
 
 data: =@ctx.datasources.filtered-courses
 item:
@@ -69,34 +66,31 @@ item:
     onPress:
       type: action.go-to
       options:
-        linkTo: course-detail
+        linkTo: course-composite
         parameters:
           name: =@ctx.current.item.name
           description: =@ctx.current.item.description
           course_id: =@ctx.current.item.id
 
-
 widgets:
-  
-  4x2: 
+  4x2:
     type: widget.group
     options:
       children:
-        
         - type: widget.value
-          
+
           options:
             value: 2
-            bottom: 
+            bottom:
               type: component.titles
               options:
                 title: Number of courses
                 icon: alert
-              
+
         - type: widget.list
-          
+
           options:
-            item: 
+            item:
               type: component.stage
               options:
                 right:

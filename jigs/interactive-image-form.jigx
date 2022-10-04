@@ -1,35 +1,42 @@
 title: Pick the correct answer
 type: jig.default
-
+description: Select birds from the image.
 datasources:
   interactive:
     type: datasource.static
     options:
       data:
         - id: 1
-          x: 0
-          y: 9
+          x: 30
+          y: 30
         - id: 2
-          x: 0
-          y: 2
+          x: 50
+          y: 20
         - id: 3
-          x: 0
-          y: 2
-        - id: 4
-          x: 3
-          y: 4
+          x: 70
+          y: 45
 
 children:
-  - type: component.interactive-image
+  - type: component.expander
     options:
-      source:
-        uri: https://getemoji.com/
-      data: =@ctx.datasources.interactive
-      item:
-        type: component.interactive-image-item
-        options:
-          id: Hello
-          title: What?
-          percentageCoordinates:
-            x: =@ctx.current.item.x
-            y: =@ctx.current.item.y
+      header:
+        centerElement:
+          type: component.titles
+          options:
+            title: "Pick the correct answer"
+
+      children:
+        - type: component.interactive-image
+          options:
+            source:
+              uri: https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRdwyMFRcoKj1kEEiDpD_S-Vh6rsVxsL3rCxg&usqp=CAU
+            data: =@ctx.datasources.interactive
+
+            item:
+              type: component.interactive-image-item
+              options:
+                id: Hello
+                title: What?
+                percentageCoordinates:
+                  x: =@ctx.current.item.x
+                  y: =@ctx.current.item.y

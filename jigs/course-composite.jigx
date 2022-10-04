@@ -1,0 +1,16 @@
+title: =@ctx.jig.inputs.name
+description: =@ctx.jig.inputs.description
+type: jig.composite
+
+children:
+  - jigId: course-detail
+    inputs:
+      name: =@ctx.jig.inputs.name
+      description: =@ctx.jig.inputs.description
+      course_id: =@ctx.jig.inputs.course_id
+
+  - jigId: interactive-image-form
+    inputs:
+      name: =@ctx.jig.inputs.name
+      description: =@ctx.jig.inputs.description
+      course_id: =@ctx.jig.inputs.course_id

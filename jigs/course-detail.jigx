@@ -33,15 +33,15 @@ children:
           title: =@ctx.current.item.question
           leftElement:
             element: checkbox
-            value: hello
+            value: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? true:false
           style:
-            isError: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ?   =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer = @ctx.current.item.correct ? false :true:null
-            isPositive: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer = @ctx.current.item.correct ? false :true:null
+            isError: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? true:false
+            isPositive: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer == @ctx.current.item.correct ? false :true:null
 
           onPress:
             type: action.go-to
             options:
-              linkTo: =@ctx.current.item.link_to
+              linkTo: question-answer-form
 
               parameters:
                 course_id: =@ctx.jig.inputs.course_id
@@ -49,8 +49,8 @@ children:
                 has_answer: =@ctx.datasources.submissions[@ctx.current.item.id in questionid] ? true :false
                 is_correct: =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer = @ctx.current.item.correct
                 user_answer: =@ctx.datasources.submissions[@ctx.current.item.id in questionid].answer
-
 # placeholders:
 #   - title: =@ctx.jig.inputs.name & " course doesnt have any questions yet 🤔🤔🤫"
 #     icon: missing-data
 #     when: =@ctx.datasources.static-question
+

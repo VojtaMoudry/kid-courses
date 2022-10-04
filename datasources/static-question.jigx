@@ -1,6 +1,14 @@
 type: datasource.static
 options:
   data:
+    # - id: 0
+    #   question: Interactive qeustion
+    #   answer1: Milion
+    #   answer2: 0
+    #   answer3: 3
+    #   answer4: 10
+    #   correct: Infinite
+    #   link_to: question-answer-form
     - id: 1
       question: How many drink are OK?
       answer1: Milion
@@ -64,7 +72,7 @@ options:
       correct: 2
       link_to: question-answer-form
 
-    - id: 7
+    - id: 8
       question: Who looks like a super mario?
       answer1: Andrej
       answer2: Markus
@@ -72,12 +80,11 @@ options:
       answer4: Daniil
       correct: 1
       link_to: question-answer-form
-
-    - id: 8
-      question: What up?
-      answer1: Milion
-      answer2: 0
-      answer3: 3
-      answer4: 10
-      correct: Infinite
-      link_to: interactive-image-form
+    # - id: 9
+    #   question: What up?
+    #   answer1: Milion
+    #   answer2: 0
+    #   answer3: 3
+    #   answer4: 10
+    #   correct: Infinite
+    #   link_to: interactive-image-form
