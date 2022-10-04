@@ -54,3 +54,11 @@ children:
 #     icon: missing-data
 #     when: =@ctx.datasources.static-question
 
+actions:
+  - children:
+      - type: action.go-to
+        options:
+          title: Assign people
+          linkTo: list-users
+          parameters:
+            courseid: =@ctx.jig.inputs.course_id
